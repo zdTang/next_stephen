@@ -1,5 +1,5 @@
 import Image from "next/image";
-import HomeImg from "../../public/home.jpg";
+import HomeImg from "@/../public/home.jpg";
 
 export default function Home() {
   return (
