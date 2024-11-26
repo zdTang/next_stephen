@@ -1,4 +1,4 @@
-import Hero from "@/components/Hero";
+import Hero from "../../components/Hero";
 import HomeImg from "@/../public/reliability.jpg";
 export default function Reliability() {
   return (
