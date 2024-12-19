@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { db } from "@/db";
+import SnippetEditForm from "@/components/snippet-edit-form";
 interface SnippetEditPageProps {
   params: {
     id: string;
@@ -15,12 +16,9 @@ const Page = async (props: SnippetEditPageProps) => {
   if (!snippet) return notFound();
 
   return (
-    <form className="">
-      <div>Editing snippet with id {id}</div>
-      <div>
-        <textarea value={snippet?.code} />
-      </div>
-    </form>
+    <div>
+      <SnippetEditForm snippet={snippet} />
+    </div>
   );
 };
 
