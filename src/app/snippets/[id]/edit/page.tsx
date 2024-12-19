@@ -1,14 +1,26 @@
+import { notFound } from "next/navigation";
+import { db } from "@/db";
 interface SnippetEditPageProps {
   params: {
     id: string;
   };
 }
-const Page = (props: SnippetEditPageProps) => {
-  const id = parseInt(props.params.id);
+const Page = async (props: SnippetEditPageProps) => {
+  const snippetParams = await props.params;
+  const id = parseInt(snippetParams.id);
+  const snippet = await db.snippet.findFirst({
+    where: { id },
+  });
+
+  if (!snippet) return notFound();
+
   return (
-    <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
-      Editing snippet with id {id}
-    </div>
+    <form className="">
+      <div>Editing snippet with id {id}</div>
+      <div>
+        <textarea value={snippet?.code} />
+      </div>
+    </form>
   );
 };
 
