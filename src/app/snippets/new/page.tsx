@@ -33,7 +33,11 @@ export default function SnippetCreatePage() {
             id="code"
           />
         </div>
-        <div>{state.message}</div>
+        {state.message ? (
+          <div className="p-2 my-2 bg-red-200 border rounded border-red-200 ">
+            {state.message}
+          </div>
+        ) : null}
         <button type="submit" className="rounded p-2 bg-blue-200">
           Create
         </button>
