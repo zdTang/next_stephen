@@ -4,7 +4,7 @@ import Editor from "@monaco-editor/react";
 import { useState } from "react";
 //import * as actions from "@/actions";  //@ represent /app, not /src
 
-import SnippetFormAction from "@/actions";
+import { editSnippet } from "@/actions";
 interface SnippetNewPageProps {
   snippet: Snippet;
 }
@@ -17,7 +17,7 @@ export default function SnippetEditForm({ snippet }: SnippetNewPageProps) {
   }
   // Notice how to construct Action function
   // Need understand how bind() works
-  const editSnippetAction = SnippetFormAction.bind(null, snippet.id, code);
+  const editSnippetAction = editSnippet.bind(null, snippet.id, code);
 
   return (
     <div>
