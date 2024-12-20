@@ -2,10 +2,11 @@
 import { db } from "@/db";
 import { redirect } from "next/navigation";
 import { useActionState } from "react";
+import { useFormState } from "react-dom";
 import * as actions from "@/actions";
 
 export default function SnippetCreatePage() {
-  const [state, SnippetFormAction] = useActionState(actions.createSnippet, {
+  const [state, SnippetFormAction] = useFormState(actions.createSnippet, {
     message: "",
   });
   return (
