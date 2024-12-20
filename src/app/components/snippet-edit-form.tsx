@@ -1,13 +1,16 @@
 "use client";
 import type { Snippet } from "@prisma/client";
 import Editor from "@monaco-editor/react";
+import { useState } from "react";
 
 interface SnippetNewPageProps {
   snippet: Snippet;
 }
 export default function SnippetEditForm({ snippet }: SnippetNewPageProps) {
-  function handleEditorChange(value: any, event: Event) {
-    console.log("here is the current model value:", value);
+  const [code, setCode] = useState(snippet.code);
+  function handleEditorChange(value: string = "", event: Event) {
+    //console.log("here is the current model value:", value);
+    setCode(value);
   }
 
   return (
