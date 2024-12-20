@@ -1,5 +1,10 @@
 "use server";
-export default function SnippetFormAction() {
-  console.log("SnippetFormAction");
-  return;
+import { redirect } from "next/navigation";
+import { db } from "@/db";
+export default async function editSnippet(id: number, code: string) {
+  await db.snippet.update({
+    where: { id },
+    data: { code },
+  });
+  redirect(`/snippets/${id}`);
 }
