@@ -1,14 +1,39 @@
 "use client";
 import { db } from "@/db";
 import { redirect } from "next/navigation";
-import { useActionState } from "react";
-import { useFormState } from "react-dom";
+import { useActionState, useState } from "react";
+//import { useFormState } from "react-dom";
 import * as actions from "@/actions";
 
+interface FormState {
+  message: string;
+  title: string | undefined;
+  code: string | undefined;
+}
+
 export default function SnippetCreatePage() {
-  const [state, SnippetFormAction] = useFormState(actions.createSnippet, {
+  const [state, SnippetFormAction] = useActionState(actions.createSnippet, {
     message: "",
+    title: "",
+    code: "",
   });
+
+  const [localState, setLocalState] = useState({
+    message: "",
+    title: "",
+    code: "",
+  });
+
+  const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+    setLocalState({ ...localState, title: value });
+  };
+
+  const handleCodeChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const { value } = event.target;
+    setLocalState({ ...localState, code: value });
+  };
+
   return (
     <form action={SnippetFormAction}>
       <h3 className="font-bold m-3">Create a Snippet</h3>
@@ -21,6 +46,8 @@ export default function SnippetCreatePage() {
             name="title"
             className="border rounded p-2 w-full"
             id="title"
+            value={localState.title as string} //  Controlled input with the state
+            onChange={handleTitleChange}
           />
         </div>
 
@@ -32,6 +59,8 @@ export default function SnippetCreatePage() {
             name="code"
             className="border rounded p-2 w-full"
             id="code"
+            value={localState.code as string} // Controlled input with the state
+            onChange={handleCodeChange}
           />
         </div>
         {state.message ? (
