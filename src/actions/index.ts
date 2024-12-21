@@ -28,16 +28,12 @@ export async function createSnippet(
     if (typeof title !== "string" || title.length < 8) {
       return {
         message: "Title must be longer",
-        title: title,
-        code: code,
       };
     }
 
     if (typeof code !== "string" || code.length < 8) {
       return {
         message: "Code must be longer",
-        title: title,
-        code: code,
       };
     }
 
@@ -47,14 +43,10 @@ export async function createSnippet(
     if (error instanceof Error) {
       return {
         message: error.message,
-        title: title,
-        code: code,
       };
     } else {
       return {
         message: "Something went wrong",
-        title: title,
-        code: code,
       };
     }
     // Redirect the user back to the root route

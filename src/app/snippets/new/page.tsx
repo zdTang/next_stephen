@@ -7,19 +7,14 @@ import * as actions from "@/actions";
 
 interface FormState {
   message: string;
-  title: string | undefined;
-  code: string | undefined;
 }
 
 export default function SnippetCreatePage() {
   const [state, SnippetFormAction] = useActionState(actions.createSnippet, {
     message: "",
-    title: "",
-    code: "",
   });
 
   const [localState, setLocalState] = useState({
-    message: "",
     title: "",
     code: "",
   });
