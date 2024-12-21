@@ -14,12 +14,12 @@ export default function SnippetCreatePage() {
     message: "",
   });
 
-  const [localState, setLocalState] = useState({
+  /*   const [localState, setLocalState] = useState({
     title: "",
     code: "",
-  });
+  }); */
 
-  const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  /*   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setLocalState({ ...localState, title: value });
   };
@@ -27,7 +27,7 @@ export default function SnippetCreatePage() {
   const handleCodeChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const { value } = event.target;
     setLocalState({ ...localState, code: value });
-  };
+  }; */
 
   return (
     <form action={SnippetFormAction}>
@@ -41,8 +41,6 @@ export default function SnippetCreatePage() {
             name="title"
             className="border rounded p-2 w-full"
             id="title"
-            value={localState.title as string} //  Controlled input with the state
-            onChange={handleTitleChange}
           />
         </div>
 
@@ -54,8 +52,6 @@ export default function SnippetCreatePage() {
             name="code"
             className="border rounded p-2 w-full"
             id="code"
-            value={localState.code as string} // Controlled input with the state
-            onChange={handleCodeChange}
           />
         </div>
         {state.message ? (
